@@ -186,6 +186,7 @@
 
      <!DOCTYPE html>
 <html>
+  
     <head>
         <style>
             table {
@@ -215,37 +216,40 @@
           </style>
     </head>
 
-    <body >
+    <body>
+      
       <table class='table table-striped' aria-labelledby="tableLabel" style="border: solid 2px green; margin:10px;">
         <thead>
           <th>Name </th>
         </thead>
-
         <tbody>
           <tr *ngFor="let e of eventList; let i = index" >
-            <td>{{i+1}}) <a routerLink="/event-details/{{i}}">{{e.name}}</a> <p><button (click)="setFavorite(i)">Add to Favorites</button> </p></td>
-            
+            <td>{{i+1}}) <a routerLink="/event-details/{{e.id - 1}}">{{e.name}}</a></td>
+            <button (click)="addFavorite(e.id - 1)" *ngIf="e.favorite === false" >[Add to favorites]</button>
+            <button (click)="remFavorite(e.id - 1)" (click)="e.favorite = !e.favorite" *ngIf="e.favorite === true">[Remove from favorites]</button>
         </tr>
         </tbody>
       </table>
     </body>
- 
-<!-- <a [routerLink]="['/home']">Home</a> <br/> -->
-<!-- <a [routerLink]="['/search-event']"> Display Information</a> -->
-<!-- <a [routerLink]="['/add-event']"> Add Event</a><br/> -->
 
-<!-- <a [routerLink]="['/contact']">Contact</a><br/> -->
+      <table class='table table-striped' aria-labelledby="tableLabel" style="border: solid 2px black; margin:10px;">
+        <thead>
+          <th>Favorite Events List</th>
+        </thead>        
+        <tbody>
+          <tr *ngFor="let e of trueList; let i = index" >
+            <td *ngIf="e.favorite === true">{{i+1}}) <a routerLink="/event-details/{{e.id - 1}}">{{e.name}}</a></td>
+            <button (click)="remFavorite(e.id - 1)" (click)="e.favorite = !e.favorite" *ngIf="e.favorite === true">[Remove from favorites]</button>
+        
+        </tbody>
+      </table>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
-<br>
-<!-- <app-event-details [eventList]="eventList"></app-event-details> -->
+  <br>
 
-<app-favorite></app-favorite>
+  <app-add-event [existingEvents]="eventList"></app-add-event>
 
-
-<app-add-event [existingEvents]="eventList"></app-add-event>
-
-<!-- <app-event-details [eventList]="displayList"></app-event-details> -->
-
+  <br>
+  
 </html>

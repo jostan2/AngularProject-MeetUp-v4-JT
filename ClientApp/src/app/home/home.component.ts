@@ -11,6 +11,8 @@ export class HomeComponent {
 
   @Input() eventList: Events[] = [];
 
+  @Input() trueList:Events[] = [];
+
   constructor(private eventService:EventService) {
     
    }
@@ -24,16 +26,30 @@ export class HomeComponent {
     this.eventService.getEvents().subscribe(
       (results) => {
         this.eventList = results;
-        console.table(results)
+        // console.log(results);
     });
   }
-
   
-  setFavorite(i:number)
+  addFavorite(i:number)
   {
-    this.eventList[i].favorite = true;
-    console.log(i, "set to true");
-    console.table(this.eventList)
+    console.log(i)
+    if(this.eventList[i].favorite === false)
+    {
+      this.eventList[i].favorite = true;
+      this.trueList.push(this.eventList[i]);
+      // console.table(this.trueList);
+    }
   }
 
+  remFavorite(i:number)
+  {
+    console.log(i);
+    if(this.eventList[i].favorite === true)
+    {
+      this.eventList[i].favorite = false;
+      this.trueList.splice(i);
+      console.table(this.trueList);
+    }
+
+  }
 }

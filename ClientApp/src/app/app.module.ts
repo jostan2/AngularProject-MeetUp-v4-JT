@@ -12,7 +12,6 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { AddEventComponent } from './add-event/add-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { FavoriteComponent } from './favorite/favorite.component';
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import { FavoriteComponent } from './favorite/favorite.component';
 
     AddEventComponent,
     EventDetailsComponent,
-    FavoriteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +35,6 @@ import { FavoriteComponent } from './favorite/favorite.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'add-event', component: AddEventComponent  },
       { path: 'event-details/:id', component: EventDetailsComponent },
-      { path: 'favorite', component: FavoriteComponent },
     ])
   ],
   providers: [],

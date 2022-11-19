@@ -23,18 +23,10 @@ export class EventService {
   public getOneEvent(id:number): Observable<Events> {
     return this.http.get<Events>(this.baseURL + this.apievent + "ListEvent/" + id);
   }
-
-  // public createNewEvent(event: Events): Observable<Events> {
-  //   return this.http.post<Events>(this.baseURL + this.apievent + "CreateEvent​", event);
-  // }
   
-  public createNewEvent(event: Events): Observable<Events> {
-    return this.http.post<Events>(this.baseURL + this.apievent + "CreateEvent​", event);
+  public addEvent(newEvent:Events):Observable<Events> {
+    return this.http.post<Events>(this.baseURL + this.apievent + "CreateEvent", newEvent);
   }
 
-  public updateEvent(id:number, event:Events){
-    return this.http.post<Events>(this.baseURL + this.apievent + `EditEvent/${id}`, event);
-  }
-  }
   //view favorites list?
 }

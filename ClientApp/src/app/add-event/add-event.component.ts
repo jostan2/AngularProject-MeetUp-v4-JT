@@ -14,7 +14,14 @@ export class AddEventComponent implements OnInit {
   @Input() existingEvents: Events[] = [];
   // newEvent:Events = {} as Events;
 
-  newEvent:Events = {id:0, name:"", description:"", category:"", price:0, favorite:false};
+  newEvent:Events = {
+    id:0, 
+    name:'', 
+    description:'', 
+    category:'', 
+    price:0, 
+    favorite:false
+  };
 
   constructor(private eventService:EventService) { }
 
@@ -22,15 +29,26 @@ export class AddEventComponent implements OnInit {
 
   }
 
-  createNewEvent()
+  addEvent()
   {
-    // this.newEvent.favorite = Boolean((<HTMLInputElement> document.getElementById("newFavorite")).value);
-    this.eventService.createNewEvent(this.newEvent).subscribe(
-    (response) => {
-      this.existingEvents.push(this.newEvent);
+   console.log(this.newEvent);
+    this.eventService.addEvent(this.newEvent)
+    .subscribe({
+      next: (event) => {
+        console.log(event)
+      }
     });
-    console.log(this.existingEvents)
   }
+
+  // createNewEvent()
+  // {
+  //   // this.newEvent.favorite = Boolean((<HTMLInputElement> document.getElementById("newFavorite")).value);
+  //   this.eventService.createNewEvent(this.newEvent).subscribe(
+  //   (response) => {
+  //     this.existingEvents.push(this.newEvent);
+  //   });
+  //   console.log(this.existingEvents)
+  // }
 
 
   // saveNewEvent(): void

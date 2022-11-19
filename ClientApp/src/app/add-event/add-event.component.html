@@ -1,17 +1,19 @@
 <h3>Add new Event</h3>
 
-<p>Name</p>
-<input type=" text" [(ngModel)]="newEvent.name"> 
+    <p>Name</p>
+    <input type=" text" name="name" [(ngModel)]="newEvent.name"> 
+    
+    <p>Description</p>
+    <input type="text" name="Description" [(ngModel)]="newEvent.description"/>
+    
+    <p>Category</p>
+    <input type="text" name ="Category" [(ngModel)]="newEvent.category"/>
+    
+    <p>Price</p>
+    <input type="number" name="Price" [(ngModel)]="newEvent.price"/>
+    
+    <button (click)="addEvent()">Create New Event</button>
 
-<p>Description</p>
-<input type="text" [(ngModel)]="newEvent.description"/>
 
-<p>Category</p>
-<input type="text" [(ngModel)]="newEvent.category"/>
-
-<p>Price</p>
-<input type="number" [(ngModel)]="newEvent.price"/>
-
-<button (click)="createNewEvent()">Create New Event</button>
 <!-- <app-add-event [existingEvents]="eventList"></app-add-event> -->
 <br>
